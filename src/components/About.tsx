@@ -29,30 +29,75 @@ export default function About() {
 
       <div className="container mx-auto px-6 md:px-12">
 
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Left - Portrait with dots */}
-          <div className="w-full lg:w-5/12 relative">
-            <div className="absolute -top-6 -left-6 grid grid-cols-6 gap-2 opacity-30">
-              {[...Array(24)].map((_, i) => (
-                <div key={i} className="w-1 h-1 bg-white rounded-full"></div>
-              ))}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          {/* Left - Portrait with sophisticated modern design */}
+          <div className="w-full lg:w-4/12 relative lg:!ml-32 mt-12 lg:mt-0">
+            {/* Decorative Grid Lines - Hidden on Mobile */}
+            <div className="absolute -inset-10 border border-white/5 pointer-events-none z-0 hidden lg:block"></div>
+            <div className="absolute -inset-20 border border-white/5 pointer-events-none z-0 hidden lg:block"></div>
+            
+            {/* Corner Brackets - Hidden on Mobile */}
+            <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-primary/40 z-20 hidden lg:block"></div>
+            <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-primary/40 z-20 hidden lg:block"></div>
+
+            {/* Side Vertical Line - Hidden on Mobile */}
+            <div className="absolute top-1/4 bottom-1/4 -left-8 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden lg:block"></div>
+
+            {/* Dotted Patterns - Simplified on Mobile */}
+            <div className="absolute -top-6 -left-6 lg:-top-12 lg:-left-12 w-24 h-24 lg:w-48 lg:h-48 opacity-20 pointer-events-none z-0" 
+                 style={{ backgroundImage: 'radial-gradient(circle, #fff 1.2px, transparent 1.2px)', backgroundSize: '16px 16px' }}>
+            </div>
+            <div className="absolute top-1/2 -right-8 lg:-right-16 w-16 h-32 lg:w-32 lg:h-64 opacity-10 pointer-events-none z-0 -translate-y-1/2" 
+                 style={{ backgroundImage: 'radial-gradient(circle, var(--color-primary) 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}>
+            </div>
+            <div className="absolute -bottom-8 lg:-bottom-16 left-1/4 w-full h-16 lg:h-24 opacity-15 pointer-events-none z-0" 
+                 style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '12px 12px' }}>
+            </div>
+
+            {/* Modern Floating Label - Hidden on Mobile */}
+            <div className="absolute -right-4 top-1/2 -translate-y-1/2 vertical-text text-[8px] uppercase tracking-[0.5em] text-white/30 font-mono z-20 rotate-90 origin-right whitespace-nowrap hidden lg:block">
+              Design & Development / 2024
             </div>
             
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.9, x: -20 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative aspect-4/5 w-full"
+              className="relative aspect-4/5 w-full z-10 shadow-3xl max-w-sm mx-auto lg:max-w-none"
             >
-              <div className="absolute inset-0 border border-primary/20 translate-x-4 translate-y-4"></div>
-              <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                <Image
-                  src="/images/portrait.jpg"
-                  alt="Yohan Christmith Details"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <div className="absolute inset-0 border border-primary/10 translate-x-4 translate-y-4"></div>
+              <motion.div 
+                className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl group cursor-pointer"
+                whileHover="hover"
+                initial="initial"
+              >
+                {/* Pulsing Image */}
+                <motion.div
+                  className="w-full h-full"
+                  variants={{
+                    initial: { 
+                      filter: ["grayscale(100%)", "grayscale(0%)", "grayscale(100%)"],
+                    },
+                    hover: { 
+                      filter: "grayscale(0%)",
+                      transition: { duration: 0.5, repeat: 0 }
+                    }
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                >
+                  <Image
+                    src="/images/about-portrait.png"
+                    alt="Yohan Christmith Details"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
 
