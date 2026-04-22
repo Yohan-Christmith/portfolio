@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Bioza | Professional Portfolio",
-  description: "Modern portfolio of a Professional Graphics Designer",
+  title: "Yohan Christmith | Professional Portfolio",
+  description: "Modern portfolio of a Fullstack Engineer & Software Architect",
 };
 
 export default function RootLayout({

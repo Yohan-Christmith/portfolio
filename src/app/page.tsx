@@ -14,15 +14,15 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-primary rounded-sm flex items-center justify-center">
-              <span className="text-background font-bold text-xs">B</span>
+              <span className="text-background font-bold text-xs">Y</span>
             </div>
             <span className="text-xl font-bold tracking-tight text-white">
-              Bioza
+              Yohan Christmith
             </span>
           </div>
           
           <p className="text-white/40 text-sm">
-            © 2026 Christmith Yohan. All rights reserved.
+            © 2026 Yohan Christmith. All rights reserved.
           </p>
           
           <div className="flex gap-6">

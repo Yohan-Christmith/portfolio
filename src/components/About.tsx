@@ -5,28 +5,29 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-background overflow-hidden">
+    <section id="about" className="py-24 bg-background overflow-hidden relative">
+      <div className="w-full flex flex-col items-center text-center mb-20 px-6 md:px-12">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-xs uppercase tracking-[0.4em] text-primary mb-4 block"
+        >
+          Biography
+        </motion.span>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-5xl md:text-7xl font-bold text-white relative z-10"
+        >
+          Who am I?
+        </motion.h2>
+        <div className="w-px h-16 bg-primary mt-8 opacity-50"></div>
+      </div>
+
       <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center mb-20">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xs uppercase tracking-[0.4em] text-primary mb-4 block"
-          >
-            Biography
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-white"
-          >
-            Who am I?
-          </motion.h2>
-          <div className="w-[1px] h-12 bg-primary mx-auto mt-8"></div>
-        </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left - Portrait with dots */}
@@ -41,13 +42,13 @@ export default function About() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/5] w-full"
+              className="relative aspect-4/5 w-full"
             >
               <div className="absolute inset-0 border border-primary/20 translate-x-4 translate-y-4"></div>
               <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
                 <Image
                   src="/images/portrait.jpg"
-                  alt="Christmith Yohan Details"
+                  alt="Yohan Christmith Details"
                   fill
                   className="object-cover"
                 />
@@ -64,7 +65,7 @@ export default function About() {
             >
               <span className="text-sm font-medium text-primary mb-4 block">About Me</span>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-8">
-                Christmith Yohan's Details
+                Yohan Christmith's Details
               </h3>
               
               <p className="text-white/60 leading-relaxed mb-8 text-lg font-light italic">
@@ -92,9 +93,9 @@ export default function About() {
                 <div>
                   <h4 className="text-white mb-4 uppercase tracking-widest text-[10px] opacity-40 font-bold">Interests</h4>
                   <ul className="space-y-3 text-white/70">
-                    <li>Graphics Design</li>
-                    <li>Brand Identity</li>
-                    <li>UI/UX Solutions</li>
+                    <li>Fullstack Engineering</li>
+                    <li>Software Architecture</li>
+                    <li>Automation Workflows</li>
                   </ul>
                 </div>
               </div>
