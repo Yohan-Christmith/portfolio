@@ -24,14 +24,14 @@ export default function About() {
         >
           Who am I?
         </motion.h2>
-        <div className="w-px h-16 bg-primary mt-8 opacity-50"></div>
+        <div className="w-px h-8 bg-primary mt-8 opacity-50"></div>
       </div>
 
       <div className="container mx-auto px-6 md:px-12">
-
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start w-full">
           {/* Left - Portrait with sophisticated modern design */}
-          <div className="w-full lg:w-4/12 relative lg:!ml-32 mt-12 lg:mt-0">
+          <div className="w-full flex justify-center lg:justify-end mt-12 lg:mt-0 lg:pr-4">
+            <div className="relative w-full max-w-sm isolate z-10">
             {/* Decorative Grid Lines - Hidden on Mobile */}
             <div className="absolute -inset-10 border border-white/5 pointer-events-none z-0 hidden lg:block"></div>
             <div className="absolute -inset-20 border border-white/5 pointer-events-none z-0 hidden lg:block"></div>
@@ -41,7 +41,7 @@ export default function About() {
             <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-primary/40 z-20 hidden lg:block"></div>
 
             {/* Side Vertical Line - Hidden on Mobile */}
-            <div className="absolute top-1/4 bottom-1/4 -left-8 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden lg:block"></div>
+            <div className="absolute top-1/4 bottom-1/4 -left-8 w-px bg-linear-to-b from-transparent via-primary/30 to-transparent hidden lg:block"></div>
 
             {/* Dotted Patterns - Simplified on Mobile */}
             <div className="absolute -top-6 -left-6 lg:-top-12 lg:-left-12 w-24 h-24 lg:w-48 lg:h-48 opacity-20 pointer-events-none z-0" 
@@ -63,7 +63,7 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.9, x: -20 }}
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative aspect-4/5 w-full z-10 shadow-3xl max-w-sm mx-auto lg:max-w-none"
+              className="relative aspect-4/5 w-full z-10 shadow-3xl"
             >
               <div className="absolute inset-0 border border-primary/10 translate-x-4 translate-y-4"></div>
               <motion.div 
@@ -73,7 +73,7 @@ export default function About() {
               >
                 {/* Pulsing Image */}
                 <motion.div
-                  className="w-full h-full"
+                  className="relative w-full h-full"
                   variants={{
                     initial: { 
                       filter: ["grayscale(100%)", "grayscale(0%)", "grayscale(100%)"],
@@ -93,16 +93,18 @@ export default function About() {
                     src="/images/about-portrait.png"
                     alt="Yohan Christmith Details"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover"
                     priority
                   />
                 </motion.div>
               </motion.div>
             </motion.div>
+            </div>
           </div>
 
           {/* Right - Content */}
-          <div className="w-full lg:w-7/12">
+          <div className="w-full pt-4 lg:pt-0 lg:pl-4 relative z-20">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -113,8 +115,14 @@ export default function About() {
                 Yohan Christmith's Details
               </h3>
               
-              <p className="text-white/60 leading-relaxed mb-8 text-lg font-light italic">
-                "Monotonectally orchestrate professionals supply chains whereas are metrics. Globally procrastinate backward-compatible application action items. Collaboratively enhance extensibl collaboration and it's through interdependent opportunities."
+              <p className="text-white/60 leading-relaxed mb-8 text-lg font-light">
+                I’m a Software Engineer based in Colombo, currently finishing my final year at SLIIT while building financial platforms at Simplebooks.
+              </p>
+              <p className="text-white/60 leading-relaxed mb-8 text-lg font-light">
+                I specialize in the "engine room" of software—the complex backend logic, automated workflows, and security architectures that make products run smoothly. I’m currently fascinated by Multi-Agent AI Systems and how we can use them to build smarter, more resilient tools.
+              </p>
+              <p className="text-white/60 leading-relaxed mb-8 text-lg font-light">
+                While I thrive on solving difficult logical puzzles, I find my "peace of mind" in UI/UX design. I treat frontend development as a creative outlet, ensuring that the heavy-duty tech I build is always wrapped in an aesthetic, world-class experience.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
@@ -131,16 +139,17 @@ export default function About() {
                     </li>
                     <li className="flex gap-2">
                         <span className="text-primary font-bold">Location:</span> 
-                        <span>San Francisco, USA</span>
+                        <span>Colombo, Sri Lanka</span>
                     </li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="text-white mb-4 uppercase tracking-widest text-[10px] opacity-40 font-bold">Interests</h4>
                   <ul className="space-y-3 text-white/70">
-                    <li>Fullstack Engineering</li>
-                    <li>Software Architecture</li>
-                    <li>Automation Workflows</li>
+                    <li>Backend & Automation</li>
+                    <li>Security Architecture</li>
+                    <li>Multi-Agent AI Systems</li>
+                    <li>Aesthetic UI/UX Design</li>
                   </ul>
                 </div>
               </div>

@@ -4,15 +4,28 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import BackgroundParticles from "./BackgroundParticles";
 import Scene3D from "./Scene3D";
-import { Download, Play, X, Mail } from "lucide-react";
+import { Download, Play, X } from "lucide-react";
 import { GithubIcon, LinkedinIcon, XIcon, FacebookIcon, InstagramIcon } from "./SocialIcons";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const SocialBubbles = dynamic(() => import("./SocialBubbles"), { ssr: false });
 
 const expertise = [
   "Associate Fullstack Engineer",
   "Workflow Automation Specialist",
   "Zero Trust Architecture Enthusiast",
 ];
+
+const desktopSocials = [
+  { Icon: GithubIcon, href: "https://github.com" },
+  { Icon: LinkedinIcon, href: "https://linkedin.com" },
+  { Icon: XIcon, href: "https://x.com" },
+  { Icon: FacebookIcon, href: "https://facebook.com" },
+  { Icon: InstagramIcon, href: "https://instagram.com" }
+];
+
+
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -27,9 +40,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="flex flex-col md:flex-row items-stretch w-full min-h-screen">
+      <div className="relative flex flex-col md:flex-row items-stretch w-full min-h-screen">
         {/* Left Content */}
-        <div className="relative w-full md:w-1/2 z-10 flex items-center justify-center p-6 md:p-12">
+        <div className="relative w-full md:w-1/2 z-10 flex items-center justify-center p-6 md:p-12 min-h-screen md:min-h-0">
           <BackgroundParticles />
           <div className="relative z-10 max-w-2xl pt-20 md:pt-0">
             <motion.div
@@ -38,12 +51,12 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="text-center md:text-left"
             >
-              <h1 className="text-7xl md:text-9xl font-bold text-white mb-4 flex items-baseline justify-center md:justify-start">
+              <h1 className="text-5xl md:text-9xl font-bold text-white mb-4 flex items-baseline justify-center md:justify-start">
                 Hello<span className="text-primary ml-1">.</span>
               </h1>
 
               <div className="relative inline-block mb-6">
-                <h2 className="text-2xl md:text-4xl font-medium text-white flex items-center justify-center md:justify-start gap-3">
+                <h2 className="text-xl md:text-4xl font-medium text-primary md:text-white flex items-center justify-center md:justify-start gap-3">
                   <span className="w-12 h-0.5 bg-primary hidden md:block"></span>
                   I'm Yohan Christmith
                 </h2>
@@ -57,7 +70,7 @@ export default function Hero() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute inset-0 text-sm md:text-base text-primary font-medium flex items-center justify-center md:justify-start uppercase"
+                    className="absolute inset-0 text-xs md:text-base text-white md:text-primary font-bold md:font-medium flex items-center justify-center md:justify-start uppercase tracking-widest"
                   >
                     {expertise[index]}
                   </motion.p>
@@ -68,7 +81,7 @@ export default function Hero() {
                 <motion.button 
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="relative overflow-hidden bg-primary text-background font-bold px-2.5! py-2.5! rounded-sm flex items-center gap-4 transition-all duration-300 shadow-[0_0_20px_rgba(0,195,137,0.3)] hover:shadow-[0_0_35px_rgba(0,195,137,0.5)] group"
+                  className="relative overflow-hidden bg-primary text-background font-bold px-1.5! md:px-2! py-1.5! md:py-2! rounded-sm flex items-center gap-4 transition-all duration-300 shadow-[0_0_20px_rgba(0,195,137,0.3)] hover:shadow-[0_0_35px_rgba(0,195,137,0.5)] group"
                 >
                   {/* Shimmer Sweep Effect */}
                   <motion.div
@@ -83,8 +96,8 @@ export default function Hero() {
                     className="absolute inset-0 w-1/2 h-full bg-linear-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
                   />
                   
-                  <Download className="w-5 h-5 relative z-10 group-hover:animate-bounce" />
-                  <span className="relative z-10 uppercase tracking-widest text-sm">Download CV</span>
+                  <Download className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:animate-bounce" />
+                  <span className="relative z-10 uppercase tracking-widest text-[10px] md:text-sm">Download CV</span>
                 </motion.button>
               </div>
             </motion.div>
@@ -92,7 +105,7 @@ export default function Hero() {
         </div>
 
         {/* Right Content - Toggle between Portrait and 3D */}
-        <div className="w-full md:w-1/2 relative min-h-125">
+        <div className="w-full md:w-1/2 absolute md:relative inset-0 z-0 md:z-auto">
           <AnimatePresence mode="wait">
             {!show3D ? (
               <motion.div
@@ -109,7 +122,8 @@ export default function Hero() {
                     alt="Yohan Christmith Portrait"
                     fill
                     priority
-                    className="object-cover object-center brightness-90 grayscale-[0.1] hover:brightness-100 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center brightness-60 md:brightness-90 grayscale-[0.1] hover:brightness-100 transition-all duration-700 scale-110 md:scale-100"
                   />
                 </div>
               </motion.div>
@@ -127,6 +141,11 @@ export default function Hero() {
             )}
           </AnimatePresence>
         </div>
+      </div>
+
+      {/* 3D Soap Bubble Social Icons (Mobile Only) */}
+      <div className="block md:hidden">
+        <SocialBubbles />
       </div>
 
       <div 
@@ -150,18 +169,11 @@ export default function Hero() {
         <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">ENG LK</span>
       </div>
 
+      {/* Desktop Social Icons */}
       <div className="absolute right-6 md:right-12 bottom-12 z-50 items-center gap-6 hidden md:flex">
         <span className="h-px w-12 bg-white/20"></span>
         <div className="flex gap-6 text-white/40">
-            {/* Social Icons */}
-            {[
-              { Icon: GithubIcon, href: "#" },
-              { Icon: LinkedinIcon, href: "#" },
-              { Icon: XIcon, href: "#" },
-              { Icon: FacebookIcon, href: "#" },
-              { Icon: InstagramIcon, href: "#" },
-              { Icon: Mail, href: "#" }
-            ].map((social, i) => (
+            {desktopSocials.map((social, i) => (
                 <a 
                   key={i} 
                   href={social.href} 
@@ -174,6 +186,8 @@ export default function Hero() {
             ))}
         </div>
       </div>
+
+
     </section>
   );
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <!-- Fetch SVG via fetch so we can inject and read bbox -->
+  <script>
+    fetch('/logo.svg')
+      .then(r => r.text())
+      .then(text => {
+        document.body.innerHTML = text;
+        const svg = document.querySelector("svg");
+        const bbox = svg.getBBox();
+        const result = document.createElement('div');
+        result.id = 'result';
+        result.textContent = `${bbox.x} ${bbox.y} ${bbox.width} ${bbox.height}`;
+        result.style.fontSize = '48px';
+        result.style.color = 'red';
+        result.style.position = 'absolute';
+        result.style.zIndex = '9999';
+        document.body.appendChild(result);
+      });
+  </script>
+</body>
+</html>

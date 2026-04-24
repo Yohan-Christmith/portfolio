@@ -67,10 +67,12 @@ function PortraitPointCloud() {
     return { positions: pos, colors: col, initialPositions: initialPos };
   }, [texture]);
 
-  useFrame((state) => {
+  const timeRef = useRef(0);
+  useFrame((state, delta) => {
     if (!pointsRef.current) return;
     
-    const time = state.clock.getElapsedTime();
+    timeRef.current += delta;
+    const time = timeRef.current;
     const posAttr = pointsRef.current.geometry.attributes.position as THREE.BufferAttribute;
     
     // Check if mouse has moved from center (0,0 is the default initial state in R3F)

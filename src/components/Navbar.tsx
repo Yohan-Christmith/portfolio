@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -32,23 +33,19 @@ export default function Navbar() {
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`glass-header rounded-full px-10 py-4 flex items-center gap-16 pointer-events-auto transition-all duration-500 shadow-2xl ${
+          className={`glass-header rounded-full px-10 py-4 flex items-center gap-16 pointer-events-auto transition-all duration-500 ${
             isScrolled ? "scale-95" : "scale-100"
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
-              <span className="text-background font-black text-lg">Y</span>
-            </div>
-            <div className="flex-col hidden lg:flex">
-              <span className="text-[11px] font-bold tracking-tighter text-white uppercase leading-none">
-                Yohan
-              </span>
-              <span className="text-[8px] font-medium text-white/50 tracking-[0.2em] uppercase leading-none">
-                Details
-              </span>
-            </div>
+          <Link href="/" className="flex items-center gap-3 group shrink-0 ml-4! md:ml-6!">
+            <Image 
+              src="/logo.svg" 
+              alt="Yohan Logo" 
+              width={32} 
+              height={32} 
+              className="w-8 h-8 md:w-12 md:h-12" 
+            />
           </Link>
 
           {/* Desktop Links */}
@@ -69,15 +66,15 @@ export default function Navbar() {
           </div>
 
           {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-4 shrink-0">
-            <button className="hidden md:flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-[9px] font-black uppercase tracking-widest px-5 py-2 rounded-full hover:bg-primary hover:text-background transition-all group">
-              Let's Talk
+          <div className="flex items-center gap-4 shrink-0 mr-4! md:mr-6!">
+            <button className="hidden md:flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-[9px] font-black uppercase tracking-widest px-5! py-2! rounded-full hover:bg-primary hover:text-background transition-all group">
+              Let's Work
               <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
             </button>
 
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white p-1.5 hover:bg-white/10 rounded-full transition-colors"
+              className="md:hidden text-white pr-4! hover:bg-white/10 rounded-full transition-colors"
             >
               <Menu className="w-5 h-5" />
             </button>
